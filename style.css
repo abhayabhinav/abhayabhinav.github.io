@@ -1,10 +1,46 @@
 h1 {
   font-size: 24px;
   text-align: center;
-  color: darkblue;
+  color: rgb(12, 139, 0);
+}
+
+h2 {
+  font-size: 24px;
+  color: rgb(12, 139, 0);
 }
 
 circle {
-  fill: lightblue;
-  stroke: black;
+  fill: rgb(173, 230, 178);
+  stroke: rgb(0, 0, 0);
+}
+
+.button {
+  background: linear-gradient(145deg, #34d058, #28a745);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.button-start {
+  background: linear-gradient(145deg, #34d058, #28a745);
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.button:hover {
+  background: linear-gradient(145deg, #28a745, #34d058);
+}
+
+.button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.button.active {
+  text-decoration: underline;
+  transform: translateY(2px);
+}
+
+.hidden {
+  display: none;
 }

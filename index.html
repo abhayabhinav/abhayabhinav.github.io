@@ -4,15 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Narrative Visualization</title>
-    <h1>Narrative Visualization</h1>
-    <script src="https://d3js.org/d3.v5.min.js"></script>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <title>Narrative Visualization</title>
   </head>
-  <body onload="init()">
-    <div class="svg-container">
-      <svg width="300" height="300"></svg>
-    </div>
+  <body>
+    <h1>Fuel Efficiency</h1>
+    <h2>I am going put some 1 line story here</h2>
+    <p>
+      1. Martini glass Start off with a scene and author lead messaging 2.
+      Reader can then explore by filtering on the engine cylinder 3. Reader can
+      further drill down to see the make - good to have 4. Scene function - with
+      engine cylinder as parameter start & Re execute the scene when filtered on
+      specific engine cylinder With make also as one of the parameter , start
+      off the scene by all the makes & Re execute the scene when filtered on
+      specific make by the reader. - Good to Have To see the Martini glass view
+      , click START button below.
+    </p>
+
+    <button class="button" id="button1">Start</button>
+    <!-- Button 1 - to plot CityMPG vs HighwayMPG -->
+    <button class="button hidden" id="button2">Scene1</button>
+    <!-- Button 2 to plot CityMPG vs NoofCylinders -->
+    <button class="button hidden" id="button3">Scene2</button>
+    <!-- Button 3 to plot CityMPG vs HighwayMPG -->
+    <button class="button hidden" id="button4">Scene3</button>
+    <!-- Container for the scatter plot -->
+    <div id="svg-container"></div>
+    <svg width="500" height="500"></svg>
     <script src="script.js"></script>
   </body>
 </html>
