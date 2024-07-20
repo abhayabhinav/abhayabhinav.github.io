@@ -44,3 +44,22 @@ circle {
 .hidden {
   display: none;
 }
+
+.dropdown-container {
+  margin-bottom: 30px;
+  text-align: right;
+}
+.dropdown-container select {
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background: linear-gradient(145deg, #34d058, #28a745);
+  padding: 10px 20px;
+  text-align: left;
+}
+
+disabled {
+  background-color: #e0e0e0;
+  color: #666;
+  cursor: not-allowed;
+}

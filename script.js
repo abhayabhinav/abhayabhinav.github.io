@@ -2,8 +2,11 @@ const startbutton = document.querySelector('#button1');
 const scene1button = document.querySelector('#button2');
 const scene2button = document.querySelector('#button3');
 const scene3button = document.querySelector('#button4');
+const dropdownContainer = document.querySelector('.dropdown-container');
+const fuelTypeSelect = document.querySelector('#fuelTypeSelect');
+const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
 
-var data;
+var data = 0;
 
 const loadData = async function () {
   data = await d3.csv('https://flunky.github.io/cars2017.csv');
@@ -25,7 +28,7 @@ startbutton.addEventListener('click', function () {
   loadScene1();
 });
 
-const loadScene1 = function () {
+const buildScatterPlot = function (data) {
   var x = d3
     .scaleLog()
     .base(10)
@@ -91,6 +94,20 @@ const loadScene1 = function () {
     .text('Average Highway MPG');
 };
 
+const loadScene1 = function () {
+  buildScatterPlot(data);
+};
+
+const loadScene2 = function () {
+  const ElectricityData = data.filter(d => d.Fuel === 'Electricity');
+  buildScatterPlot(ElectricityData);
+};
+
+const loadScene3 = function () {
+  const DieselData = data.filter(d => d.Fuel === 'Diesel');
+  buildScatterPlot(DieselData);
+};
+
 scene1button.addEventListener('click', function () {
   scene1button.classList.add('active');
   scene2button.classList.remove('active');
@@ -99,15 +116,49 @@ scene1button.addEventListener('click', function () {
 });
 // Scene 2 filetr on data
 scene2button.addEventListener('click', function () {
+  d3.select('svg').html('');
   scene1button.classList.remove('active');
   scene2button.classList.add('active');
   scene3button.classList.remove('active');
-  loadScene1();
+  loadScene2();
 });
 
 scene3button.addEventListener('click', function () {
+  d3.select('svg').html('');
   scene1button.classList.remove('active');
   scene2button.classList.remove('active');
   scene3button.classList.add('active');
-  loadScene1();
+  dropdownContainer.classList.remove('hidden');
+  loadScene3();
+});
+
+fuelTypeSelect.addEventListener('change', function () {
+  d3.select('svg').html('');
+  const fuelTypeSelected = fuelTypeSelect.value;
+  const fuelTypeData =
+    fuelTypeSelected === 'All'
+      ? data
+      : data.filter(d => d.Fuel === fuelTypeSelected);
+  const engineCylindersAvailable = [
+    ...new Set(fuelTypeData.map(d => d.EngineCylinders)),
+  ].sort((a, b) => a - b);
+  engineCyliderSelect.innerHTML = '<option value="All">All</option>';
+  engineCylindersAvailable.forEach(cylinder => {
+    const option = document.createElement('option');
+    option.value = cylinder;
+    option.textContent = cylinder;
+    engineCyliderSelect.appendChild(option);
+  });
+  engineCyliderSelect.disabled = false;
+  buildScatterPlot(fuelTypeData);
+});
+
+engineCyliderSelect.addEventListener('change', function () {
+  d3.select('svg').html('');
+  const engineCyliderSelected = engineCyliderSelect.value;
+  const engineCylinderData =
+    engineCyliderSelected === 'All'
+      ? data
+      : data.filter(d => d.EngineCylinders === engineCyliderSelected);
+  buildScatterPlot(engineCylinderData);
 });

@@ -21,14 +21,38 @@
       specific make by the reader. - Good to Have To see the Martini glass view
       , click START button below.
     </p>
-
+    <!-- Start Button - To begin the visualization -->
     <button class="button" id="button1">Start</button>
-    <!-- Button 1 - to plot CityMPG vs HighwayMPG -->
+    <!-- Button 1 - to load scene 1 , a scattre plot for all data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button2">Scene1</button>
-    <!-- Button 2 to plot CityMPG vs NoofCylinders -->
+    <!-- Button 2 - to load scene 2 , a scattre plot for Electricity fuel type data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button3">Scene2</button>
-    <!-- Button 3 to plot CityMPG vs HighwayMPG -->
+    <!-- Button 3 - to load scene 3 , a scattre plot for Diesel fuel type data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button4">Scene3</button>
+    <!-- Dropdown - this option becomes available only on scene 3 to further selectfuel type and number of engine cylinder -->
+    <div class="dropdown-container hidden">
+      <label for="fuelTypeSelect">Select Fuel Type: </label>
+      <select id="fuelTypeSelect">
+        <option value="Select">Select</option>
+        <option value="All">All</option>
+        <option value="Gasoline">Gasoline</option>
+        <option value="Diesel">Diesel</option>
+        <option value="Electricity">Electricity</option>
+      </select>
+      <label for="engineCyliderSelect">Select Engine Cylinder: </label>
+      <select id="engineCyliderSelect" disabled>
+        <option value="select">Select</option>
+        <option value="All">All</option>
+        <!-- <option value="0">0</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="6">6</option>
+        <option value="8">8</option>
+        <option value="10">10</option>
+        <option value="12">12</option> -->
+      </select>
+    </div>
     <!-- Container for the scatter plot -->
     <div id="svg-container"></div>
     <svg width="500" height="500"></svg>
