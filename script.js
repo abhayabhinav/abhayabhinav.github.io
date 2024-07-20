@@ -20,12 +20,24 @@ const margin = { top: 40, right: 30, bottom: 40, left: 40 };
 const svg = d3.select('svg');
 
 startbutton.addEventListener('click', function () {
-  startbutton.textContent = 'Visualization in Progress';
-  scene1button.classList.remove('hidden');
-  scene2button.classList.remove('hidden');
-  scene3button.classList.remove('hidden');
-  scene1button.classList.add('active');
-  loadScene1();
+  if (startbutton.textContent === 'Start Visualization') {
+    startbutton.textContent = 'Stop Visualization';
+    scene1button.classList.remove('hidden');
+    scene2button.classList.remove('hidden');
+    scene3button.classList.remove('hidden');
+    scene1button.classList.add('active');
+    loadScene1();
+  } else {
+    d3.select('svg').html('');
+    startbutton.textContent = 'Start Visualization';
+    scene1button.classList.add('hidden');
+    scene2button.classList.add('hidden');
+    scene3button.classList.add('hidden');
+    scene1button.classList.remove('active');
+    scene2button.classList.remove('active');
+    scene3button.classList.remove('active');
+    dropdownContainer.classList.add('hidden');
+  }
 });
 
 const buildScatterPlot = function (data) {
@@ -99,30 +111,35 @@ const loadScene1 = function () {
 };
 
 const loadScene2 = function () {
-  const ElectricityData = data.filter(d => d.Fuel === 'Electricity');
-  buildScatterPlot(ElectricityData);
-};
-
-const loadScene3 = function () {
   const DieselData = data.filter(d => d.Fuel === 'Diesel');
   buildScatterPlot(DieselData);
 };
 
+const loadScene3 = function () {
+  const ElectricityData = data.filter(d => d.Fuel === 'Electricity');
+  buildScatterPlot(ElectricityData);
+};
+
+//scene 1 trigger - explicit trigger - Overview of all Data
 scene1button.addEventListener('click', function () {
   scene1button.classList.add('active');
   scene2button.classList.remove('active');
   scene3button.classList.remove('active');
+  dropdownContainer.classList.add('hidden');
   loadScene1();
 });
-// Scene 2 filetr on data
+
+// Scene 2 trigger - Fuel type - Diesel Data
 scene2button.addEventListener('click', function () {
   d3.select('svg').html('');
   scene1button.classList.remove('active');
   scene2button.classList.add('active');
   scene3button.classList.remove('active');
+  dropdownContainer.classList.add('hidden');
   loadScene2();
 });
 
+// Scene 2 trigger - Fuel type - Electricity Data
 scene3button.addEventListener('click', function () {
   d3.select('svg').html('');
   scene1button.classList.remove('active');
@@ -130,8 +147,12 @@ scene3button.addEventListener('click', function () {
   scene3button.classList.add('active');
   dropdownContainer.classList.remove('hidden');
   loadScene3();
+  fuelTypeSelect.value = 'Select';
+  engineCyliderSelect.value = 'All';
+  engineCyliderSelect.disabled = true;
 });
 
+//Select Fuel Type Drop down triggers
 fuelTypeSelect.addEventListener('change', function () {
   d3.select('svg').html('');
   const fuelTypeSelected = fuelTypeSelect.value;
@@ -153,6 +174,7 @@ fuelTypeSelect.addEventListener('change', function () {
   buildScatterPlot(fuelTypeData);
 });
 
+//Select Engine Cylinders Drop down triggers
 engineCyliderSelect.addEventListener('change', function () {
   d3.select('svg').html('');
   const engineCyliderSelected = engineCyliderSelect.value;

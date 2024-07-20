@@ -9,26 +9,45 @@
     <title>Narrative Visualization</title>
   </head>
   <body>
-    <h1>Fuel Efficiency</h1>
-    <h2>I am going put some 1 line story here</h2>
+    <h1>Fuel Efficiency - Narrative Visualization</h1>
     <p>
-      1. Martini glass Start off with a scene and author lead messaging 2.
-      Reader can then explore by filtering on the engine cylinder 3. Reader can
-      further drill down to see the make - good to have 4. Scene function - with
-      engine cylinder as parameter start & Re execute the scene when filtered on
-      specific engine cylinder With make also as one of the parameter , start
-      off the scene by all the makes & Re execute the scene when filtered on
-      specific make by the reader. - Good to Have To see the Martini glass view
-      , click START button below.
+      This visualization can help readers explore fuel efficiency of cars based
+      on fuel type and engine cylinders. I would like my readers to know a
+      little bit about the data set used to create this narrative visualization.
+      The cars data set contains following attributes - Car Make, Fuel Type,
+      Engine Cylinders, Average Highway Mileage Per Gallon and Average City
+      Mileage Per Gallon.
+    </p>
+    <p>
+      The visual structure is as follows: There is a "Start - Visualization"
+      button, the readers can click on this start button to begin the journey.
+      There are three scenes available , where I am going to lead the readers to
+      each of these three scenes as they click on the respective buttons. A
+      Scatter Plot of Avg City Mileage and Avg Highway Mileage is displayed on
+      each of these three scenes. Scene 1 - "Overview - All Fuel Type", all data
+      is displayed to give an overview. Scene 2 - "Diesel - Fuel Type", diesel
+      only data is presented. Scene 3 - "Electricity - Fuel Type", Electricity
+      only data is presented. In each of these scenes readers can gauge the fuel
+      efficiency of the cars by fuel type.
+    </p>
+    <p>
+      When readers finally reaches on Scene 3, "Electricity - Fuel Type", there
+      are filtering options available on Fuel Type and Engine Cylinders to allow
+      readers to perform a free form exploration to find fuel efficient cars.
+      Please note Engine Cylinders drop down gets enabled only when Fuel Type is
+      selected. Once readers begin their journey, there is always a "Stop -
+      Visualization" button available to reset the stage and start the journey
+      again. Hope you all have fun! Plese begin by clicking the
+      "Start-Visualization"!
     </p>
     <!-- Start Button - To begin the visualization -->
-    <button class="button" id="button1">Start</button>
+    <button class="button" id="button1">Start Visualization</button>
     <!-- Button 1 - to load scene 1 , a scattre plot for all data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button2">Scene1</button>
+    <button class="button hidden" id="button2">Overview - All Fuel Type</button>
     <!-- Button 2 - to load scene 2 , a scattre plot for Electricity fuel type data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button3">Scene2</button>
+    <button class="button hidden" id="button3">Diesel</button>
     <!-- Button 3 - to load scene 3 , a scattre plot for Diesel fuel type data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button4">Scene3</button>
+    <button class="button hidden" id="button4">Electricity</button>
     <!-- Dropdown - this option becomes available only on scene 3 to further selectfuel type and number of engine cylinder -->
     <div class="dropdown-container hidden">
       <label for="fuelTypeSelect">Select Fuel Type: </label>
