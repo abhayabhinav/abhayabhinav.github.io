@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
     <title>Narrative Visualization</title>
   </head>
   <body>
     <h1>Fuel Efficiency - Narrative Visualization</h1>
     <p>
       This visualization can help readers explore fuel efficiency of cars based
-      on fuel type and engine cylinders. I would like my readers to know a
-      little bit about the data set used to create this narrative visualization.
-      The cars data set contains following attributes - Car Make, Fuel Type,
-      Engine Cylinders, Average Highway Mileage Per Gallon and Average City
-      Mileage Per Gallon.
+      on fuel type and engine cylinders. I would like to describe a little bit
+      about the data set used to create this narrative visualization. The cars
+      data set contains following attributes - Car Make, Fuel Type, Engine
+      Cylinders, Average Highway Mileage Per Gallon and Average City Mileage Per
+      Gallon.
     </p>
     <p>
       The visual structure is as follows: There is a "Start - Visualization"
@@ -25,10 +26,10 @@
       each of these three scenes as they click on the respective buttons. A
       Scatter Plot of Avg City Mileage and Avg Highway Mileage is displayed on
       each of these three scenes. Scene 1 - "Overview - All Fuel Type", all data
-      is displayed to give an overview. Scene 2 - "Diesel - Fuel Type", diesel
-      only data is presented. Scene 3 - "Electricity - Fuel Type", Electricity
-      only data is presented. In each of these scenes readers can gauge the fuel
-      efficiency of the cars by fuel type.
+      is displayed to give an overview. Scene 2 - "Gasoline - Fuel Type",
+      Gasoline only data is presented. Scene 3 - "Electricity - Fuel Type",
+      Electricity only data is presented. In each of these scenes readers can
+      gauge the fuel efficiency of the cars by fuel type.
     </p>
     <p>
       When readers finally reaches on Scene 3, "Electricity - Fuel Type", there
@@ -45,7 +46,7 @@
     <!-- Button 1 - to load scene 1 , a scattre plot for all data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button2">Overview - All Fuel Type</button>
     <!-- Button 2 - to load scene 2 , a scattre plot for Electricity fuel type data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button3">Diesel</button>
+    <button class="button hidden" id="button3">Gasoline</button>
     <!-- Button 3 - to load scene 3 , a scattre plot for Diesel fuel type data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button4">Electricity</button>
     <!-- Dropdown - this option becomes available only on scene 3 to further selectfuel type and number of engine cylinder -->
@@ -74,7 +75,8 @@
     </div>
     <!-- Container for the scatter plot -->
     <div id="svg-container"></div>
-    <svg width="500" height="500"></svg>
+    <svg width="500" height="500" id="example2"></svg>
+    <div class="tooltip"></div>
     <script src="script.js"></script>
   </body>
 </html>
