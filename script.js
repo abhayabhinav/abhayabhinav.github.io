@@ -75,7 +75,7 @@ const buildScatterPlot = function (data) {
     .on('mouseover', function (d) {
       tooltip
         .style('opacity', 1)
-        .html(parseInt(d.EngineCylinders))
+        .html(parseInt(d.EngineCylinders) + ' - ' + d.Make)
         .style('left', event.pageX + 5 + 'px')
         .style('top', event.pageY - 28 + 'px');
     })

@@ -12,34 +12,39 @@
   <body>
     <h1>Fuel Efficiency - Narrative Visualization</h1>
     <p>
-      This visualization can help readers explore fuel efficiency of cars based
-      on fuel type and engine cylinders. I would like to describe a little bit
-      about the data set used to create this narrative visualization. The cars
-      data set contains following attributes - Car Make, Fuel Type, Engine
-      Cylinders, Average Highway Mileage Per Gallon and Average City Mileage Per
-      Gallon.
+      This visualization can help readers to analyze fuel efficiency of cars
+      based on fuel type and engine cylinders. The idea is to help readers
+      choose a fuel efficient car of their liking keeping carbon footprint in
+      mind. Before I explain about narrative and visual structure I would like
+      describe little bit about the data set. The cars data set contains the
+      following attributes - Car Make, Fuel Type, Engine Cylinders, Average
+      Highway Mileage Per Gallon and Average City Mileage Per Gallon.
     </p>
     <p>
-      The visual structure is as follows: There is a "Start - Visualization"
-      button, the readers can click on this start button to begin the journey.
-      There are three scenes available , where I am going to lead the readers to
-      each of these three scenes as they click on the respective buttons. A
-      Scatter Plot of Avg City Mileage and Avg Highway Mileage is displayed on
-      each of these three scenes. Scene 1 - "Overview - All Fuel Type", all data
-      is displayed to give an overview. Scene 2 - "Gasoline - Fuel Type",
-      Gasoline only data is presented. Scene 3 - "Electricity - Fuel Type",
-      Electricity only data is presented. In each of these scenes readers can
-      gauge the fuel efficiency of the cars by fuel type.
+      The visual structure is as follows: There is a "Start Visualization"
+      button to begin the journey. It will open 3 more buttons or tabs, we can
+      also call them as scenes. All the three scenes have a scatter plot graph
+      representing Average Highway Mileage Per Gallon and Average City Mileage
+      Per Gallon for the cars. Readers can navigate to each of these scenes by
+      clicking on the respective buttons and will be guided with a pre filtered
+      data on fuel type on each of these scenes. Scene 1 is - "Overview - All
+      Fuel Type", all data is displayed to give an overview. Scene 2 -
+      "Gasoline", filtered by fuel type Gasoline. Scene 3 - "Electricity",
+      filtered by fuel type Electricity. In each of these scenes readers can
+      gauge the fuel efficiency of the cars. There are information available on
+      mouse hover which conveys about the Engine Cylinder and the Car Make along
+      with annotations highlighting correlation between engine cylinders and
+      fuel efficiency.
     </p>
     <p>
-      When readers finally reaches on Scene 3, "Electricity - Fuel Type", there
-      are filtering options available on Fuel Type and Engine Cylinders to allow
-      readers to perform a free form exploration to find fuel efficient cars.
-      Please note Engine Cylinders drop down gets enabled only when Fuel Type is
-      selected. Once readers begin their journey, there is always a "Stop -
-      Visualization" button available to reset the stage and start the journey
-      again. Hope you all have fun! Plese begin by clicking the
-      "Start-Visualization"!
+      On Scene 3, there are filtering options available on Fuel Type and Engine
+      Cylinders to allow for free exploration. Engine Cylinders is enabled only
+      when a Fuel Type is selected and is also a cascaded dropdown. The list of
+      values in Engine Cylinders depends on Fuel Type selected. Please know the
+      "Start Visualization" button changes to "Stop - Visualization" as you
+      begin and is available for the readers to reset the stage. Hope you all
+      find this visualization exciting and be able to choose a fuel efficient
+      car make for yourself keeping low carbon footprint!
     </p>
     <!-- Start Button - To begin the visualization -->
     <button class="button" id="button1">Start Visualization</button>
@@ -63,14 +68,6 @@
       <select id="engineCyliderSelect" disabled>
         <option value="select">Select</option>
         <option value="All">All</option>
-        <!-- <option value="0">0</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="6">6</option>
-        <option value="8">8</option>
-        <option value="10">10</option>
-        <option value="12">12</option> -->
       </select>
     </div>
     <!-- Container for the scatter plot -->
