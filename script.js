@@ -8,6 +8,7 @@ const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
 var fuelTypeSelected;
 var engineCylindersAvailable;
 const tooltip = d3.select('.tooltip');
+var fuelTypeData;
 
 var data = 0;
 
@@ -75,7 +76,12 @@ const buildScatterPlot = function (data) {
     .on('mouseover', function (d) {
       tooltip
         .style('opacity', 1)
-        .html(parseInt(d.EngineCylinders) + ' - ' + d.Make)
+        .html(
+          'Engine Cylinder: ' +
+            parseInt(d.EngineCylinders) +
+            ' ; Car Make: ' +
+            d.Make
+        )
         .style('left', event.pageX + 5 + 'px')
         .style('top', event.pageY - 28 + 'px');
     })
@@ -176,7 +182,7 @@ scene3button.addEventListener('click', function () {
 fuelTypeSelect.addEventListener('change', function () {
   d3.select('svg').html('');
   fuelTypeSelected = fuelTypeSelect.value;
-  const fuelTypeData =
+  fuelTypeData =
     fuelTypeSelected === 'All'
       ? data
       : data.filter(d => d.Fuel === fuelTypeSelected);
@@ -200,10 +206,8 @@ engineCyliderSelect.addEventListener('change', function () {
   const engineCyliderSelected = engineCyliderSelect.value;
   const engineCylinderData =
     engineCyliderSelected === 'All'
-      ? data.filter(d => d.Fuel === fuelTypeSelected)
-      : data
-          .filter(d => d.Fuel === fuelTypeSelected)
-          .filter(d => d.EngineCylinders === engineCyliderSelected);
+      ? fuelTypeData
+      : fuelTypeData.filter(d => d.EngineCylinders === engineCyliderSelected);
   buildScatterPlot(engineCylinderData);
 });
 
