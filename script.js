@@ -5,6 +5,7 @@ const scene3button = document.querySelector('#button4');
 const dropdownContainer = document.querySelector('.dropdown-container');
 const fuelTypeSelect = document.querySelector('#fuelTypeSelect');
 const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
+const tooltip = d3.select('.tooltip');
 
 var data = 0;
 
@@ -68,6 +69,21 @@ const buildScatterPlot = function (data) {
     })
     .attr('r', function (d) {
       return 3 + parseInt(d.EngineCylinders);
+    })
+    .on('mouseover', function (d) {
+      tooltip
+        .style('opacity', 1)
+        .html(parseInt(d.EngineCylinders))
+        .style('left', event.pageX + 5 + 'px')
+        .style('top', event.pageY - 28 + 'px');
+    })
+    .on('mousemove', event => {
+      tooltip
+        .style('left', event.pageX + 5 + 'px')
+        .style('top', event.pageY - 28 + 'px');
+    })
+    .on('mouseout', () => {
+      tooltip.style('opacity', 0);
     });
 
   svg
@@ -108,11 +124,13 @@ const buildScatterPlot = function (data) {
 
 const loadScene1 = function () {
   buildScatterPlot(data);
+  addUpwardTrendAnnotation();
 };
 
 const loadScene2 = function () {
-  const DieselData = data.filter(d => d.Fuel === 'Diesel');
-  buildScatterPlot(DieselData);
+  const GasolineData = data.filter(d => d.Fuel === 'Gasoline');
+  buildScatterPlot(GasolineData);
+  addUpwardTrendAnnotation();
 };
 
 const loadScene3 = function () {
@@ -129,7 +147,7 @@ scene1button.addEventListener('click', function () {
   loadScene1();
 });
 
-// Scene 2 trigger - Fuel type - Diesel Data
+// Scene 2 trigger - Fuel type - Gasoline Data
 scene2button.addEventListener('click', function () {
   d3.select('svg').html('');
   scene1button.classList.remove('active');
@@ -184,3 +202,23 @@ engineCyliderSelect.addEventListener('change', function () {
       : data.filter(d => d.EngineCylinders === engineCyliderSelected);
   buildScatterPlot(engineCylinderData);
 });
+
+const addUpwardTrendAnnotation = function () {
+  const annotations = [
+    {
+      note: {
+        label:
+          'Engine cylinders are used for the circle size. As the number of engine cylinders in car decreases the fuel efficiency tends to get better. There are few exceptions to this correlation.',
+        title: 'Fuel Efficiency and Engine Cylinders Correlation.',
+      },
+      x: 150,
+      y: 300,
+      dx: 100,
+      dy: -80,
+    },
+  ];
+
+  const makeAnnotations = d3.annotation().annotations(annotations);
+
+  svg.append('g').attr('class', 'annotation-group').call(makeAnnotations);
+};
