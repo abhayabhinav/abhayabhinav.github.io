@@ -5,6 +5,8 @@ const scene3button = document.querySelector('#button4');
 const dropdownContainer = document.querySelector('.dropdown-container');
 const fuelTypeSelect = document.querySelector('#fuelTypeSelect');
 const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
+var fuelTypeSelected;
+var engineCylindersAvailable;
 const tooltip = d3.select('.tooltip');
 
 var data = 0;
@@ -77,7 +79,7 @@ const buildScatterPlot = function (data) {
         .style('left', event.pageX + 5 + 'px')
         .style('top', event.pageY - 28 + 'px');
     })
-    .on('mousemove', event => {
+    .on('mousemove', function (event) {
       tooltip
         .style('left', event.pageX + 5 + 'px')
         .style('top', event.pageY - 28 + 'px');
@@ -173,12 +175,12 @@ scene3button.addEventListener('click', function () {
 //Select Fuel Type Drop down triggers
 fuelTypeSelect.addEventListener('change', function () {
   d3.select('svg').html('');
-  const fuelTypeSelected = fuelTypeSelect.value;
+  fuelTypeSelected = fuelTypeSelect.value;
   const fuelTypeData =
     fuelTypeSelected === 'All'
       ? data
       : data.filter(d => d.Fuel === fuelTypeSelected);
-  const engineCylindersAvailable = [
+  engineCylindersAvailable = [
     ...new Set(fuelTypeData.map(d => d.EngineCylinders)),
   ].sort((a, b) => a - b);
   engineCyliderSelect.innerHTML = '<option value="All">All</option>';
@@ -198,8 +200,10 @@ engineCyliderSelect.addEventListener('change', function () {
   const engineCyliderSelected = engineCyliderSelect.value;
   const engineCylinderData =
     engineCyliderSelected === 'All'
-      ? data
-      : data.filter(d => d.EngineCylinders === engineCyliderSelected);
+      ? data.filter(d => d.Fuel === fuelTypeSelected)
+      : data
+          .filter(d => d.Fuel === fuelTypeSelected)
+          .filter(d => d.EngineCylinders === engineCyliderSelected);
   buildScatterPlot(engineCylinderData);
 });
 
