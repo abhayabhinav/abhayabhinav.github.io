@@ -30,6 +30,7 @@ circle {
   padding: 10px 20px;
   text-align: center;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .button-start {
@@ -37,6 +38,7 @@ circle {
   padding: 10px 20px;
   text-align: center;
   font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .button:hover {
@@ -58,10 +60,10 @@ circle {
 
 .dropdown-container {
   margin-bottom: 30px;
-  text-align: right;
+  text-align: left;
 }
 .dropdown-container select {
-  font-size: 16px;
+  font-size: 14px;
   border-radius: 5px;
   border: 1px solid #ccc;
   background: linear-gradient(145deg, #34d058, #28a745);
