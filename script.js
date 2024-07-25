@@ -5,6 +5,7 @@ const scene3button = document.querySelector('#button4');
 const dropdownContainer = document.querySelector('.dropdown-container');
 const fuelTypeSelect = document.querySelector('#fuelTypeSelect');
 const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
+const showText = document.querySelector('#myParagraph');
 var fuelTypeSelected;
 var engineCylindersAvailable;
 const tooltip = d3.select('.tooltip');
@@ -41,6 +42,7 @@ startbutton.addEventListener('click', function () {
     scene2button.classList.remove('active');
     scene3button.classList.remove('active');
     dropdownContainer.classList.add('hidden');
+    showText.classList.add('hidden');
   }
 });
 
@@ -152,6 +154,7 @@ scene1button.addEventListener('click', function () {
   scene2button.classList.remove('active');
   scene3button.classList.remove('active');
   dropdownContainer.classList.add('hidden');
+  showText.classList.add('hidden');
   loadScene1();
 });
 
@@ -162,12 +165,14 @@ scene2button.addEventListener('click', function () {
   scene2button.classList.add('active');
   scene3button.classList.remove('active');
   dropdownContainer.classList.add('hidden');
+  showText.classList.add('hidden');
   loadScene2();
 });
 
 // Scene 2 trigger - Fuel type - Electricity Data
 scene3button.addEventListener('click', function () {
   d3.select('svg').html('');
+  showText.classList.remove('hidden');
   scene1button.classList.remove('active');
   scene2button.classList.remove('active');
   scene3button.classList.add('active');

@@ -46,15 +46,10 @@
       find this visualization exciting and be able to choose a fuel efficient
       car make for yourself keeping low carbon footprint!
     </p>
-    <!-- Start Button - To begin the visualization -->
     <button class="button" id="button1">Start Visualization</button>
-    <!-- Button 1 - to load scene 1 , a scattre plot for all data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button2">Scene 1 - All Fuel Type</button>
-    <!-- Button 2 - to load scene 2 , a scattre plot for Electricity fuel type data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button3">Scene 2 - Gasoline</button>
-    <!-- Button 3 - to load scene 3 , a scattre plot for Diesel fuel type data between CityMPG vs HighwayMPG -->
     <button class="button hidden" id="button4">Scene 3 - Electricity</button>
-    <!-- Dropdown - this option becomes available only on scene 3 to further selectfuel type and number of engine cylinder -->
     <div class="dropdown-container hidden">
       <label for="fuelTypeSelect">Select Fuel Type: </label>
       <select id="fuelTypeSelect">
@@ -70,6 +65,11 @@
         <option value="All">All</option>
       </select>
     </div>
+    <mark id="myParagraph" class="hidden">
+      Filters are available on Fuel type and Engine Cylinders to explore. Engine
+      cylinders opens up when Fuel type is selected. Mouse hover is available to
+      view the Engine Cyiliner and Car Make info.
+    </mark>
     <!-- Container for the scatter plot -->
     <div id="svg-container"></div>
     <svg width="500" height="500" id="example2"></svg>
