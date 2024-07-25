@@ -25,16 +25,16 @@
       button to begin the journey. It will open 3 more buttons or tabs, we can
       also call them as scenes. All the three scenes have a scatter plot graph
       representing Average Highway Mileage Per Gallon and Average City Mileage
-      Per Gallon for the cars. Readers can navigate to each of these scenes by
-      clicking on the respective buttons and will be guided with a pre filtered
-      data on fuel type on each of these scenes. Scene 1 is - "Overview - All
-      Fuel Type", all data is displayed to give an overview. Scene 2 -
-      "Gasoline", filtered by fuel type Gasoline. Scene 3 - "Electricity",
-      filtered by fuel type Electricity. In each of these scenes readers can
-      gauge the fuel efficiency of the cars. There are information available on
-      mouse hover which conveys about the Engine Cylinder and the Car Make along
-      with annotations highlighting correlation between engine cylinders and
-      fuel efficiency.
+      Per Gallon for the cars filtered on a specific fule type. Readers can
+      navigate to each of these scenes by clicking on the respective buttons and
+      will be guided with a pre filtered data on fuel type on each of these
+      scenes. Scene 1 is - "All Fuel Type", all data is displayed to give an
+      overview. Scene 2 - "Gasoline", filtered by fuel type Gasoline. Scene 3 -
+      "Electricity", filtered by fuel type Electricity. In each of these scenes
+      readers can gauge the fuel efficiency of the cars. There are information
+      available on mouse hover which conveys about the Engine Cylinder and the
+      Car Make along with annotations highlighting correlation between engine
+      cylinders and fuel efficiency.
     </p>
     <p>
       On Scene 3, there are filtering options available on Fuel Type and Engine
@@ -49,11 +49,11 @@
     <!-- Start Button - To begin the visualization -->
     <button class="button" id="button1">Start Visualization</button>
     <!-- Button 1 - to load scene 1 , a scattre plot for all data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button2">1 - All Fuel Type</button>
+    <button class="button hidden" id="button2">Scene 1 - All Fuel Type</button>
     <!-- Button 2 - to load scene 2 , a scattre plot for Electricity fuel type data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button3">2 - Gasoline</button>
+    <button class="button hidden" id="button3">Scene 2 - Gasoline</button>
     <!-- Button 3 - to load scene 3 , a scattre plot for Diesel fuel type data between CityMPG vs HighwayMPG -->
-    <button class="button hidden" id="button4">3 - Electricity</button>
+    <button class="button hidden" id="button4">Scene 3 - Electricity</button>
     <!-- Dropdown - this option becomes available only on scene 3 to further selectfuel type and number of engine cylinder -->
     <div class="dropdown-container hidden">
       <label for="fuelTypeSelect">Select Fuel Type: </label>
