@@ -5,7 +5,7 @@ const scene3button = document.querySelector('#button4');
 const dropdownContainer = document.querySelector('.dropdown-container');
 const fuelTypeSelect = document.querySelector('#fuelTypeSelect');
 const engineCyliderSelect = document.querySelector('#engineCyliderSelect');
-const showText = document.querySelector('#myParagraph');
+const showText = document.querySelector('#shownote');
 var fuelTypeSelected;
 var engineCylindersAvailable;
 const tooltip = d3.select('.tooltip');
